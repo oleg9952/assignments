@@ -1,13 +1,7 @@
 <div class="gallery">
-    <app-card  ></app-card>
-    <app-card [routerLink]="['/mission/1']" ></app-card>
-    <app-card [routerLink]="['/mission/1']" ></app-card>
-    <app-card [routerLink]="['/mission/1']" ></app-card>
-    <app-card [routerLink]="['/mission/1']" ></app-card>
-    <app-card [routerLink]="['/mission/1']" ></app-card>
-    <app-card [routerLink]="['/mission/1']" ></app-card>
-    <app-card [routerLink]="['/mission/1']" ></app-card>
-    <app-card [routerLink]="['/mission/1']" ></app-card>
-    <app-card [routerLink]="['/mission/1']" ></app-card>
-    <app-card [routerLink]="['/mission/1']"></app-card>
+    <div *ngFor="let mission of galleryService.output">
+        <app-card
+            [mission]="mission"
+        ></app-card>
+    </div>
 </div>

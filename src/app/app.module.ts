@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 // ----- MaterialUI -----
 import {MatCardModule} from '@angular/material/card';
@@ -36,6 +37,7 @@ import { MissionComponent } from './components/views/mission/mission.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     // ----- MaterialUI -----
     MatCardModule,
     MatProgressSpinnerModule,

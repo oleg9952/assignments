@@ -1,4 +1,8 @@
+@use '../../../utils/mixins.scss' as mixins;
+
 .header {
     height: 250px;
     background-color: orange;
+    @include mixins.imgBG('src/assets/header/header_bg.jpg');
+    background-position: 0% 0%;
 }

@@ -1,8 +1,8 @@
-<mat-card class="card" [routerLink]="['/mission/1']">
+<mat-card class="card" [routerLink]="['/mission/', mission.flight_number]">
     <div class="card__img">
-        <img src="" alt="img">
+        <img [src]="cardImage" alt="img">
     </div>
     <div class="card__title">
-        <h2>Mission name</h2>
+        <h2>{{ mission.mission_name }}</h2>
     </div>
 </mat-card>
