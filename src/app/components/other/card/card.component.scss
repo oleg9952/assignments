@@ -1,0 +1,29 @@
+.card {
+    height: 300px;
+    transition: .3s;
+    padding: 0;
+    overflow: hidden;
+    cursor: pointer;
+    display: grid;
+    grid-template-rows: 1fr 50px;
+    outline: none;
+    &__img {
+        img {
+            object-fit: cover;
+            border: 1px solid red;
+            height: 100%;
+            width: 100%;
+            display: block;
+        }
+    }
+    &__title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 10px;
+    }
+    &:hover {
+        transform: scale(.95);
+    }
+    
+}

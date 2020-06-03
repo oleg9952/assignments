@@ -1,4 +1,6 @@
 .wrapper {
     min-height: 100vh;
-    padding-bottom: 40px;
+    .content {
+        padding: 20px 10px 40px;
+    }
 }

@@ -1,6 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// ----- MaterialUI -----
+import {MatCardModule} from '@angular/material/card';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatButtonModule} from '@angular/material/button';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/other/header/header.component';
@@ -10,6 +15,9 @@ import { HomeComponent } from './components/views/home/home.component';
 import { GalleryComponent } from './components/views/gallery/gallery.component';
 import { AboutComponent } from './components/views/about/about.component';
 import { CardComponent } from './components/other/card/card.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SpinnerComponent } from './components/other/spinner/spinner.component';
+import { MissionComponent } from './components/views/mission/mission.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +28,18 @@ import { CardComponent } from './components/other/card/card.component';
     HomeComponent,
     GalleryComponent,
     AboutComponent,
-    CardComponent
+    CardComponent,
+    SpinnerComponent,
+    MissionComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    // ----- MaterialUI -----
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

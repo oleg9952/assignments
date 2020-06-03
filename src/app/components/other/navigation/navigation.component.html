@@ -1,22 +1,30 @@
 <div class="nav">
     <div class="nav__body">
-        <p 
-            class="nav__item"
+        <button 
+            class="nav__btn"
+            routerLinkActive="router-link-active"
+            [routerLinkActiveOptions]="{exact: true}"
+            mat-button
             [routerLink]="['']" 
         >
             Home
-        </p>
-        <p 
-            class="nav__item"
-            [routerLink]="['gallery']" 
+        </button>
+        
+        <button 
+            class="nav__btn"
+            routerLinkActive="router-link-active"
+            mat-button
+            [routerLink]="['missions']" 
         >
-            Gallery
-        </p>
-        <p 
-            class="nav__item"
-            [routerLink]="['about']" 
+            Missions
+        </button>
+        <button 
+            class="nav__btn"
+            routerLinkActive="router-link-active"
+            mat-button
+            [routerLink]="['about']"
         >
             About
-        </p>
+        </button>
     </div>
 </div>

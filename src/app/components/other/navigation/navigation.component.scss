@@ -1,5 +1,5 @@
 .nav {
-    background-color: rgba(255, 255, 255, .4);
+    // background-color: rgba(255, 255, 255, .4);
     height: 40px;
     &__body {
         width: 1170px;
@@ -8,11 +8,12 @@
         height: 100%;
         display: flex;
         align-items: center;
-        p {
-            padding: 0 10px;
-            cursor: pointer;
-            border: none;
-            outline: none;
-        }
+    }
+    &__btn {
+        color: #fff;
+        width: 120px;
+    }
+    .router-link-active {
+        background-color: rgba(105, 105, 248, .3);
     }
 }
