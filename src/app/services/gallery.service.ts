@@ -7,6 +7,7 @@ import { Mission } from '../components/other/card/card.component';
 })
 export class GalleryService {
   api: string = 'https://api.spacexdata.com/v3/launches'
+  loading: boolean = false
   missions: Array<Mission> = null
   output: Array<Mission> = null
 
@@ -14,10 +15,10 @@ export class GalleryService {
 
   getMissions():void {
     if (this.missions) return
+    this.loading = true
     this.http.get<Array<Mission>>(this.api)
       .subscribe((resp: Array<Mission>) => { 
         const filtered: Array<Mission> = []
-
         resp.forEach((data: any) => {
           if (data.links.flickr_images.length) {
             filtered.push({
@@ -27,6 +28,7 @@ export class GalleryService {
             })
           }
         })
+        this.loading = false
         this.missions = filtered
         this.output = this.missions.slice(0, 30)
       })

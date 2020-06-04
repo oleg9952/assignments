@@ -1,7 +1,12 @@
 <div class="gallery">
-    <div *ngFor="let mission of galleryService.output">
-        <app-card
-            [mission]="mission"
-        ></app-card>
+    <div *ngIf="!galleryService.loading;else spinner">
+        <div *ngFor="let mission of galleryService.output">
+            <app-card
+                [mission]="mission"
+            ></app-card>
+        </div>
     </div>
+    <ng-template #spinner>
+        <app-spinner></app-spinner>
+    </ng-template>
 </div>

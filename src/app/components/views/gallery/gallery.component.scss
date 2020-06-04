@@ -1,7 +1,15 @@
 .gallery {
     max-width: 1170px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 15px;
+    position: relative;
+    > div {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 15px;
+    }
+    app-spinner {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
