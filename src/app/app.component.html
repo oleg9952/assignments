@@ -1,0 +1,30 @@
+<div class="block">
+  <h1>Data Binding</h1>
+  <input 
+    [(ngModel)]="username"
+    type="text" 
+    placeholder="Username..."
+  >
+  <p>{{ username }}</p>
+  <button
+    [disabled]="!username.length"
+    (click)="resetUsername()"
+  >Reset</button>
+</div>
+
+
+
+<div class="block">
+  <h1>Directives</h1>
+  <button
+    (click)="onClick()"
+  >Details</button>
+  <p
+    *ngIf="showP"
+  >Lorem ipsum dolor sit amet.</p>
+  <p 
+    *ngFor="let number of numbers"
+    [ngStyle]="{backgroundColor: number >= 5 ? 'blue' : ''}"
+    [ngClass]="{white: number >= 5}"
+  >{{ number }}</p>
+</div>
