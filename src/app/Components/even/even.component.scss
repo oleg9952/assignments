@@ -1,0 +1,27 @@
+@use '../../Utils/fonts.scss' as fonts;
+
+.even {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    padding: 8px;
+    h2 {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    &__body {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 10px;
+    }
+    &__item {
+        background-color: #a9c7ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 17px;
+        border-radius: 50%;
+        font-size: 18px;
+        color: #fff;
+    }
+}

@@ -1,0 +1,11 @@
+.wrapper {
+    min-height: 100vh;
+    padding-top: 15px;   
+    .output__holder {
+        width: 768px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 20px;
+    } 
+}

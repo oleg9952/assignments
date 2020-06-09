@@ -1,0 +1,24 @@
+.controls {
+    position: fixed;
+    left: 50%;
+    bottom: 15px;
+    transform: translateX(-50%);
+    button {
+        border: none;
+        background-color: #3dc2ff;
+        width: 80px;
+        height: 30px;
+        font-size: 18px;
+        outline: none;
+        cursor: pointer;
+        color: #fff;
+        margin: 0 5px;
+    }
+    button:last-child {
+        background-color: #ff6822;
+    }
+    button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+}
