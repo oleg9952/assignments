@@ -11,4 +11,12 @@ export class AppComponent {
   addNumber(num: number) {
     this.numbers.push(num);
   }
+
+  getEven(data: Array<number>): Array<number> {
+    return data.filter((num: number) => num % 2 === 0);
+  }
+
+  getOdd(data: Array<number>): Array<number> {
+    return data.filter((num: number) => num % 2 !== 0);
+  }
 }

@@ -10,15 +10,10 @@ import { numberItem } from 'src/app/Utils/animations';
   ]
 })
 export class OddComponent implements OnInit {
-  @Input() numbers: Array<number>;
-
+  @Input() numOdd: number;
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  getOdd(data: Array<number>): Array<number> {
-    return data.filter((num: number) => num % 2 !== 0);
   }
 }

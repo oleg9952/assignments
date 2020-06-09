@@ -11,14 +11,10 @@ import { numberItem } from 'src/app/Utils/animations';
   ]
 })
 export class EvenComponent implements OnInit {
-  @Input() numbers: Array<number>;
+  @Input() numEven: number;
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  getEven(data: Array<number>): Array<number> {
-    return data.filter((num: number) => num % 2 === 0);
   }
 }
