@@ -23,8 +23,8 @@ export class ControlsComponent implements OnInit {
     this.state = !this.state;
     this.interval = setInterval(() => {
       this.counter += 1;
-      this.payload.emit(this.counter)
-    }, 2000)
+      this.payload.emit(this.counter);
+    }, 2000);
   }
 
   end(): void {
