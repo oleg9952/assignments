@@ -1,4 +1,11 @@
 <div class="controls">
-    <button>Start</button>
-    <button>End</button>
+    <button 
+        [disabled]="state"
+        (click)="start()"
+    >Start</button>
+
+    <button 
+        [disabled]="!state"
+        (click)="end()"
+    >End</button>
 </div>

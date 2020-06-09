@@ -1,18 +1,18 @@
 <div class="wrapper">
     <div class="output__holder">
         <app-odd
-
+            [numbers]="numbers"
         ></app-odd>
 
 
         <app-even
-
+            [numbers]="numbers"
         ></app-even>
     </div>
     
 
 
     <app-controls
-
+        (payload)="addNumber($event)"
     ></app-controls>
 </div>

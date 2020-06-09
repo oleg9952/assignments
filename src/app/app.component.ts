@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'task3';
+  numbers: Array<number> = []
+
+  addNumber(num: number) {
+    this.numbers.push(num)
+    console.log('num added')
+  }
 }

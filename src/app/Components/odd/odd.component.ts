@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-odd',
@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./odd.component.scss']
 })
 export class OddComponent implements OnInit {
+  @Input() numbers: Array<number>;
+
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  getOdd(data: Array<number>): Array<number> {
+    return data.filter((num: number) => num % 2 !== 0);
+  }
 }
