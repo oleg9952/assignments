@@ -1,14 +1,14 @@
 <div class="product">
     <div class="product__content">
         <i class="fas fa-cart-plus"></i>
-        <p class="product__name">Lorem, ipsum dolor.</p>
-        <p class="product__amount">53</p>
+        <p class="product__name">{{ product.name }}</p>
+        <p class="product__amount">{{ product.amount }}</p>
     </div>
     <div class="product__controls">
-        <button>
+        <button (click)="handleClone(product)">
             <i class="fas fa-clone"></i>
         </button>
-        <button>
+        <button (click)="handleDelete(product.id)">
             <i class="fas fa-trash"></i>
         </button>
     </div>

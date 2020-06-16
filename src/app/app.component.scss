@@ -7,12 +7,12 @@
         #0081ae, 
         #007199, 
         #006285);
-    padding-top: 25px;
+    padding: 30px 0;
 }
 
 .app {
     position: relative;
-    margin: 0 auto;
+    margin: 0 auto 25px;
     width: 600px;
     background-color: #fff;
     box-shadow: 
@@ -28,13 +28,24 @@
         margin-bottom: 10px;
     }
     &__content {
-        // border: 1px solid black;
         h2 {
             text-align: center;
             margin-bottom: 10px;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             color: #00a1da;
+        }
+    }
+    &__output {
+        overflow: hidden;
+    }
+    .placeholder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ccc;
+        > * {
+            margin: 0 5px;
         }
     }
 }
