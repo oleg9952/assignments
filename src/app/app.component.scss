@@ -1,0 +1,40 @@
+.wrapper {
+    min-height: 100vh;
+    background-image: linear-gradient(
+        to bottom, 
+        #00a1da, 
+        #0091c4, 
+        #0081ae, 
+        #007199, 
+        #006285);
+    padding-top: 25px;
+}
+
+.app {
+    position: relative;
+    margin: 0 auto;
+    width: 600px;
+    background-color: #fff;
+    box-shadow: 
+        0 14px 28px rgba(0,0,0,0.25), 
+        0 10px 10px rgba(0,0,0,0.22);
+    padding: 10px;
+    h1 {
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #0091c4;
+        margin-bottom: 10px;
+    }
+    &__content {
+        // border: 1px solid black;
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #00a1da;
+        }
+    }
+}
