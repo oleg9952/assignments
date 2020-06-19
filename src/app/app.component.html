@@ -1,3 +1,38 @@
 <div class="wrapper">
-    
+    <div class="wrapper__block">
+        <h1 class="wrapper__title">Subtask - 1</h1>
+        <input 
+            class="first__input"
+            type="text"
+            placeholder="Your input..."
+            appFocus
+        >
+    </div>
+
+
+    <div class="wrapper__block">
+        <h1 class="wrapper__title">Subtask - 2</h1>
+        <input 
+            class="second__input"
+            type="text"
+            placeholder="Your input..."
+            #secondInput
+            (input)="updateLength(secondInput.value.length)"
+        >
+        <button
+            *appHide="inputLength"         
+        >Click</button>
+    </div>
+
+
+    <div class="wrapper__block">
+        <h1 class="wrapper__title">Subtask - 3</h1>
+        <input 
+            class="third__input"
+            type="text"
+            placeholder="Your input..."
+            appDStyle
+            [dirStyles]="{fontSize: '20px', borderColor: 'orange'}"
+        >
+    </div>
 </div>
