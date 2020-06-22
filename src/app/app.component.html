@@ -16,11 +16,10 @@
             class="second__input"
             type="text"
             placeholder="Your input..."
-            #secondInput
-            (input)="updateLength(secondInput.value.length)"
+            [(ngModel)]="inputValue"
         >
         <button
-            *appHide="inputLength"         
+            *appHide="inputValue.length"         
         >Click</button>
     </div>
 

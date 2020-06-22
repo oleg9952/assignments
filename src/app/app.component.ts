@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,9 +6,5 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent{
-  inputLength: number = null;
-
-  updateLength(length: number): void {
-    this.inputLength = length;
-  }
+  inputValue: string = '';
 }
