@@ -5,9 +5,8 @@ import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 })
 export class HideDirective {
 
-  @Input('appHide') set inputLength(condition: number) {
+  @Input('appHide') set inputLength(condition: boolean) {
     if (condition) {
-      if (condition > 1) return;
       this.viewContainer.createEmbeddedView(this.templateRef);
     } else {
       this.viewContainer.clear();
