@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ProductInterf } from 'src/app/app.component';
+import { Component, OnInit, Input } from '@angular/core';
+import { ShoppingService, ProductInterf } from 'src/app/Services/shopping.service';
 
 @Component({
   selector: 'app-product',
@@ -9,19 +9,15 @@ import { ProductInterf } from 'src/app/app.component';
 export class ProductComponent implements OnInit {
   @Input() product: ProductInterf;
 
-  @Output() onClone = new EventEmitter<ProductInterf>();
-  @Output() onDelete = new EventEmitter<string>();
+  editInput: boolean = false;
 
-  constructor() { }
+  constructor(public shoppingService: ShoppingService) { }
 
   ngOnInit(): void {
   }
 
-  handleClone(product: ProductInterf): void {
-    this.onClone.emit(product);
-  }
-  
-  handleDelete(productId: string): void {
-    this.onDelete.emit(productId);
+  handleEdit(productId: string, productName: string): void {
+    this.editInput = !this.editInput;
+    this.shoppingService.editProduct(productId, productName);
   }
 }

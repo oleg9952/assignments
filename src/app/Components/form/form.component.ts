@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ShoppingService } from 'src/app/Services/shopping.service';
 
 export interface FormDataInterf {
   name: string;
@@ -11,12 +12,10 @@ export interface FormDataInterf {
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
-  @Output() onNewProduct = new EventEmitter<FormDataInterf>();
-
   @ViewChild('productName') productName;
   @ViewChild('productAmount') productAmount;
 
-  constructor() { }
+  constructor(private shoppingService: ShoppingService) { }
 
   ngOnInit(): void {
   }
@@ -30,7 +29,7 @@ export class FormComponent implements OnInit {
       amount: parseInt(this.productAmount.nativeElement.value)
     }
 
-    this.onNewProduct.emit(data);
+    this.shoppingService.addNewProduct(data);
 
     form.reset();
   }

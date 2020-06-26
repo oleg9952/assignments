@@ -1,19 +1,15 @@
 <div class="wrapper">
     <div class="app">
         <h1>Shopping-list</h1>
-        <app-form
-            (onNewProduct)="addNewProduct($event)"
-        ></app-form>
+        <app-form></app-form>
         <div class="app__content">
             <h2>Your list</h2>
             <div class="app__output"
-                *ngIf="shoppingList.length;else listEmpty"
+                *ngIf="shoppingService.shoppingList.length;else listEmpty"
             >
                 <app-product
-                    *ngFor="let product of shoppingList"
+                    *ngFor="let product of shoppingService.shoppingList"
                     [product]="product"
-                    (onClone)="cloneProduct($event)"
-                    (onDelete)="deleteProduct($event)"
                 ></app-product>
             </div>
             <ng-template #listEmpty>
