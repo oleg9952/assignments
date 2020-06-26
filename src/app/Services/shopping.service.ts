@@ -13,13 +13,7 @@ export interface ProductInterf {
   providedIn: 'root'
 })
 export class ShoppingService {
-  shoppingList: Array<ProductInterf> = [
-    {
-      id: '1',
-      name: 'sdasd',
-      amount: 2
-    }
-  ];
+  shoppingList: Array<ProductInterf> = [];
 
   constructor(private loggingService: LoggingService) { }
 
