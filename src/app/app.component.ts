@@ -8,6 +8,6 @@ import { ShoppingService } from './Services/shopping.service';
 })
 export class AppComponent {
 
-  constructor(public shoppingService: ShoppingService) {}
+  constructor() {}
 
 }

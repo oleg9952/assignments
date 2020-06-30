@@ -7,5 +7,8 @@
 5. [Task-5 || Custom Directives](https://github.com/oleg9952/assignments/tree/task_5)
 6. [Task-6 || Services](https://github.com/oleg9952/assignments/tree/task_6)
 7. **Task-7 || Routing (Basics)**
+8. [Task-8 || Routing (Nesting)](https://github.com/oleg9952/assignments/tree/task_8)
+9. [Task-9 || Routing (Guards/Resolvers)](https://github.com/oleg9952/assignments/tree/task_9)
+10. [Task-10 || RxJS](https://github.com/oleg9952/assignments/tree/task_10)
 ------------
 - Dynamic routes
