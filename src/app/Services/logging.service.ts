@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { v4 as uuidv4 } from 'uuid';
+import ACTIONS from './loggingActions'
 
 export interface NotificInterf {
   id: string;
@@ -16,42 +17,12 @@ export class LoggingService {
 
   constructor() { }
 
-  notifyAdd(productName: string): void {
+  notify(productName: string, type: string): void {
     const id = uuidv4();
     this.notifications.push(<NotificInterf>{
-      id: id,
-      type: 'add',
-      message: `You've added ${productName}`
-    });
-    this.clearNotifi(id);
-  }
-
-  notifyEdit(productName: string): void {
-    const id = uuidv4();
-    this.notifications.push(<NotificInterf>{
-      id: id,
-      type: 'edit',
-      message: `You've edited ${productName}`
-    });
-    this.clearNotifi(id);
-  }
-
-  notifyClone(productName: string): void {
-    const id = uuidv4();
-    this.notifications.push(<NotificInterf>{
-      id: id,
-      type: 'clone',
-      message: `You've cloned ${productName}`
-    });
-    this.clearNotifi(id);
-  }
-
-  notifyDelete(productName: string): void {
-    const id = uuidv4();
-    this.notifications.push(<NotificInterf>{
-      id: id,
-      type: 'delete',
-      message: `You've deleted ${productName}`
+      id,
+      type,
+      message: `${ACTIONS[type].message} ${productName}`
     });
     this.clearNotifi(id);
   }
