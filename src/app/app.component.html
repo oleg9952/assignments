@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <div class="app">
+        <h1>Shopping-list</h1>
+        <app-form></app-form>
+        <div class="app__content">
+            <h2>Your list</h2>
+            <div class="app__output"
+                *ngIf="shoppingService.shoppingList.length;else listEmpty"
+            >
+                <app-product
+                    *ngFor="let product of shoppingService.shoppingList"
+                    [product]="product"
+                ></app-product>
+            </div>
+            <ng-template #listEmpty>
+                <div class="placeholder">
+                    <i class="far fa-folder-open"></i>
+                    <p>Your list is empty...</p>
+                </div>
+            </ng-template>
+        </div>
+    </div> 
+    <app-notification></app-notification> 
+</div>
