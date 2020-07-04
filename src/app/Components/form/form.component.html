@@ -1,0 +1,23 @@
+<form class="form"
+    (submit)="handleSubmit($event)"
+>
+    <div class="form__inputs">
+        <input 
+            type="text" 
+            name="name"
+            placeholder="Product name..."
+            required
+            #productName
+        >
+        <input 
+            type="number" 
+            name="amount"
+            placeholder="How many?"
+            required
+            #productAmount
+        >
+    </div>
+    <button type="submit">
+        <i class="fas fa-shopping-basket"></i>
+    </button>
+</form>

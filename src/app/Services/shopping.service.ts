@@ -1,0 +1,50 @@
+import { Injectable } from '@angular/core';
+import { v4 as uuidv4 } from 'uuid';
+import { FormDataInterf } from '../Components/form/form.component';
+import { LoggingService } from './logging.service';
+import ACTIONS from './loggingActions';
+
+export interface ProductInterf {
+  id: string;
+  name: string;
+  amount: number
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ShoppingService {
+  shoppingList: Array<ProductInterf> = [];
+
+  constructor(private loggingService: LoggingService) { }
+
+  addNewProduct(product: FormDataInterf, cloning?: boolean): void {
+    this.shoppingList.push(<ProductInterf>{
+      ...product,
+      id: uuidv4()
+    });
+    if (cloning) return;
+    this.loggingService.notify(product.name, ACTIONS.add.type);
+  }
+
+  cloneProduct(product: ProductInterf): void {
+    this.addNewProduct(product, true);
+    this.loggingService.notify(product.name, ACTIONS.clone.type);
+  }
+
+  deleteProduct(productId: string): void {
+    const index = this.shoppingList.findIndex((prod: ProductInterf) => prod.id === productId);
+    if (index === -1) return;
+    this.loggingService.notify(this.shoppingList[index].name, ACTIONS.delete.type);
+    this.shoppingList.splice(index, 1);
+  }
+
+  editProduct(productId: string, productName: string): void {
+    for (const product of this.shoppingList) {
+      if (product.id === productId) {
+        product.name = productName;
+        this.loggingService.notify(productName, ACTIONS.edit.type);
+      }
+    }
+  }
+}
