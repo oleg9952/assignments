@@ -4,7 +4,7 @@
         <ul class="shoppinglist__list">
             <li
                 *ngFor="let product of shoppingService.shoppingList" 
-                [routerLink]="['/product', product.id]" 
+                [routerLink]="['/shopping-list', product.id]" 
             >{{ product.name }} || {{ product.amount }} </li>
         </ul>
     </div>

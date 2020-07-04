@@ -14,7 +14,38 @@ export interface ProductInterf {
   providedIn: 'root'
 })
 export class ShoppingService {
-  shoppingList: Array<ProductInterf> = [];
+  shoppingList: Array<ProductInterf> = [
+    {
+      id: '1',
+      name: 'Tomato',
+      amount: 3
+    },
+    {
+      id: '2',
+      name: 'Potato',
+      amount: 6
+    },
+    {
+      id: '3',
+      name: 'Cucumber',
+      amount: 2
+    },
+    {
+      id: '4',
+      name: 'Cabbage',
+      amount: 3
+    },
+    {
+      id: '5',
+      name: 'Apple',
+      amount: 1
+    },
+    {
+      id: '6',
+      name: 'Strawberry',
+      amount: 8
+    }
+  ];
 
   constructor(private loggingService: LoggingService) { }
 

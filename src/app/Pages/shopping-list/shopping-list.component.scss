@@ -4,6 +4,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    animation: show 1s forwards;
     h1 {
         color: #fff;
         text-align: center;
@@ -29,5 +31,11 @@
             color: #0091c4;
             font-weight: bold;
         }
+    }
+}
+
+@keyframes show {
+    100% {
+        opacity: 1;
     }
 }
