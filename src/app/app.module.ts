@@ -10,8 +10,9 @@ import { TabsComponent } from './Components/tabs/tabs.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { AddPurchaseComponent } from './Pages/add-purchase/add-purchase.component';
 import { ShoppingListComponent } from './Pages/shopping-list/shopping-list.component';
-import { ProductPageComponent } from './Pages/product-page/product-page.component';
 import { NotFoundComponent } from './Pages/not-found/not-found.component';
+import { ProductDetailsComponent } from './Components/product-details/product-details.component';
+import { EditProductComponent } from './Components/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +23,9 @@ import { NotFoundComponent } from './Pages/not-found/not-found.component';
     HomeComponent,
     AddPurchaseComponent,
     ShoppingListComponent,
-    ProductPageComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ProductDetailsComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,

@@ -49,6 +49,10 @@ export class ShoppingService {
 
   constructor(private loggingService: LoggingService) { }
 
+  getProductById(id: string): ProductInterf {
+    return this.shoppingList.find((product: ProductInterf) => product.id === id);
+  }
+
   addNewProduct(product: FormDataInterf, cloning?: boolean): void {
     this.shoppingList.push(<ProductInterf>{
       ...product,
