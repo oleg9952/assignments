@@ -1,26 +1,12 @@
-<!-- <div class="shoppinglist">
-    <div *ngIf="shoppingService.shoppingList.length;else listEmpty">
-        <h1>Your basket contains</h1>
-        <ul class="shoppinglist__list">
-            <li
-                *ngFor="let product of shoppingService.shoppingList" 
-                [routerLink]="['/shopping-list', product.id]" 
-            >{{ product.name }} || {{ product.amount }} </li>
-        </ul>
-    </div>
-    <ng-template #listEmpty>
-        <h1>Your basket is empty...</h1>
-    </ng-template>
-</div> -->
-
 <div class="shoppinglist">
     <div class="shoppinglist__body">
         <div class="shoppinglist__body-column">
             <ul>
                 <li 
-                    *ngFor="let product of shoppingService.shoppingList"
+                    *ngFor="let product of shoppingService.shoppingList; let i = index"
                     [routerLink]="[product.id]"
                     routerLinkActive="active" 
+                    [queryParams]="{ allowEdit: i % 2 === 0 ? 1 : 0}"
                 >
                     {{ product.name }} || {{ product.amount }}
                 </li>

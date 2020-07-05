@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ShoppingService, ProductInterf } from 'src/app/Services/shopping.service';
 
 @Component({
@@ -13,6 +13,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private shoppingService: ShoppingService
   ) { }
 
@@ -24,6 +25,13 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
+  }
+
+  goToEdit(): void {
+    this.router.navigate(['edit'], {
+      relativeTo: this.route,
+      preserveQueryParams: true
+    });
   }
 
 }

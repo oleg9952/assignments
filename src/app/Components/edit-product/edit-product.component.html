@@ -1,1 +1,17 @@
-<p>edit-product works!</p>
+<form class="editproduct"
+    *ngIf="allowEdit;else editProhibited"
+    (submit)="handleSubmit($event)"
+>
+    <input
+        type="text"
+        name="newName"
+        [value]="product.name"
+    >
+    <button type="submit">Save</button>
+</form>
+
+<ng-template #editProhibited>
+    <div class="prohibited">
+        <h2>Editing Prohibited</h2>
+    </div>
+</ng-template>

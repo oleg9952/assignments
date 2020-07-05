@@ -8,6 +8,8 @@
 6. [Task-6 || Services](https://github.com/oleg9952/assignments/tree/task_6)
 7. [Task-7 || Routing (Basics)](https://github.com/oleg9952/assignments/tree/task_7)
 8. **Task-8 || Routing (Nesting)**
+9. [Task-9 || Routing (Guards/Resolvers)](https://github.com/oleg9952/assignments/tree/task_9)
+10. [Task-10 || RxJS](https://github.com/oleg9952/assignments/tree/task_10)
 ------------
 - queryParams
 - childRoutes

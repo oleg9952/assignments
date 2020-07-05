@@ -1,7 +1,4 @@
 .productdetails {
-    transform: translateY(50%);
-    opacity: 0;
-    animation: show 1s forwards;
     p {
         font-size: 18px;
         padding: 5px 0;
@@ -25,12 +22,5 @@
     }
     .edit-btn:hover {
         background-color: #47c4f1;
-    }
-}
-
-@keyframes show {
-    100% {
-        transform: translateY(0%);
-        opacity: 1;
     }
 }
