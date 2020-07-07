@@ -1,0 +1,19 @@
+<div class="shoppinglist">
+    <div class="shoppinglist__body">
+        <div class="shoppinglist__body-column">
+            <ul>
+                <li 
+                    *ngFor="let product of shoppingService.shoppingList; let i = index"
+                    [routerLink]="[product.id]"
+                    routerLinkActive="active" 
+                    [queryParams]="{ allowEdit: i % 2 === 0 ? 1 : 0}"
+                >
+                    {{ product.name }} || {{ product.amount }}
+                </li>
+            </ul>
+        </div>
+        <div class="shoppinglist__body-column">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

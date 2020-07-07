@@ -1,0 +1,44 @@
+.form {
+    margin-bottom: 25px;
+    background-color: #fff;
+    padding: 10px;
+    margin: 0 auto;
+    box-shadow: 
+        0 14px 28px rgba(0,0,0,0.25), 
+        0 10px 10px rgba(0,0,0,0.22);
+    &__inputs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 10px;
+        margin-bottom: 10px;
+        input {
+            padding: 0 10px;
+            height: 35px;
+            outline: none;
+            transition: .7s;
+            border: 2px solid #00a1da;
+            color: #000;
+            font-weight: bold;
+        }
+        input:focus {
+            background-color: #d2f3ff;
+        }
+    }
+    button {
+        display: block;
+        margin: 0 auto;
+        font-size: 25px;   
+        padding: 10px;
+        border-radius: 50%; 
+        border: 2px solid #00a1da;  
+        background-color: #fff;
+        color: #00a1da;   
+        cursor: pointer;
+        outline: none;
+        transition: .3s;
+    }
+    button:hover {
+        background-color: #00a1da;
+        color: #fff;
+    }
+}

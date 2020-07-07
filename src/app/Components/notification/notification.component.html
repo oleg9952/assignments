@@ -1,0 +1,27 @@
+<div class="notifications">
+    <div class="notifications__notification"
+        *ngFor="let notif of loggingService.notifications"
+        @removal
+    >
+        <div class="notifications__notification--icons"
+            [ngSwitch]="notif.type"
+        >
+            <i class="fas fa-shopping-basket"
+                *ngSwitchCase="'add'"
+            ></i>
+            <i class="fas fa-pencil-alt"
+                *ngSwitchCase="'edit'"
+            ></i>
+            <i class="fas fa-clone"
+                *ngSwitchCase="'clone'"
+            ></i>
+            <i class="fas fa-trash"
+                *ngSwitchCase="'delete'"
+            ></i>
+            <div *ngSwitchDefault></div>
+        </div>
+        <p class="notifications__notification--message">
+            {{ notif.message }}
+        </p>
+    </div>
+</div>
