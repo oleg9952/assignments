@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ShoppingService, ProductInterf } from 'src/app/Services/shopping.service';
 
 @Component({
@@ -16,6 +16,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private shoppingService: ShoppingService
   ) { }
 
@@ -38,6 +39,10 @@ export class EditProductComponent implements OnInit, OnDestroy {
     const form: any = e.currentTarget;
     this.shoppingService.editProduct(this.product.id, form.newName.value);
     form.reset();
+    this.router.navigate(['../'], {
+      relativeTo: this.route,
+      preserveQueryParams: true
+    })
   }
 
 }
