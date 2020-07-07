@@ -8,6 +8,8 @@ import { NotFoundComponent } from './Pages/not-found/not-found.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { EditProductComponent } from './Components/edit-product/edit-product.component';
 import { AuthGuardService } from './Services/auth-guard.service';
+import { ShoppingResolverService } from './Services/shopping-resolver.service';
+import { ProductResolverService } from './Services/product-resolver.service';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -15,10 +17,22 @@ const routes: Routes = [
     { 
         path: 'shopping-list', 
         component: ShoppingListComponent,
-        canActivate: [AuthGuardService], 
+        canActivate: [AuthGuardService],
+        resolve: {
+            shoppingList: ShoppingResolverService
+        }, 
         children: [
-            { path: ':productId', component: ProductDetailsComponent },
-            { path: ':productId/edit', component: EditProductComponent }
+            { 
+                path: ':productId', 
+                component: ProductDetailsComponent,
+                resolve: {
+                    product: ProductResolverService
+                }
+            },
+            { 
+                path: ':productId/edit', 
+                component: EditProductComponent 
+            }
         ]
     },
     { path: 'page-not-found', component: NotFoundComponent },
