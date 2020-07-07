@@ -13,6 +13,7 @@ import { ShoppingListComponent } from './Pages/shopping-list/shopping-list.compo
 import { NotFoundComponent } from './Pages/not-found/not-found.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { EditProductComponent } from './Components/edit-product/edit-product.component';
+import { AuthControlsComponent } from './Components/auth-controls/auth-controls.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EditProductComponent } from './Components/edit-product/edit-product.com
     ShoppingListComponent,
     NotFoundComponent,
     ProductDetailsComponent,
-    EditProductComponent
+    EditProductComponent,
+    AuthControlsComponent
   ],
   imports: [
     BrowserModule,
