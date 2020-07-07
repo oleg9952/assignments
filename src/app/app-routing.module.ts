@@ -10,6 +10,7 @@ import { EditProductComponent } from './Components/edit-product/edit-product.com
 import { AuthGuardService } from './Services/auth-guard.service';
 import { ShoppingResolverService } from './Services/shopping-resolver.service';
 import { ProductResolverService } from './Services/product-resolver.service';
+import { EditDeactivateGuardService } from './Services/edit-deactivate-guard.service';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -31,7 +32,8 @@ const routes: Routes = [
             },
             { 
                 path: ':productId/edit', 
-                component: EditProductComponent 
+                component: EditProductComponent,
+                canDeactivate: [EditDeactivateGuardService]
             }
         ]
     },

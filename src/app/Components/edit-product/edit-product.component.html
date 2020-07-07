@@ -5,7 +5,9 @@
     <input
         type="text"
         name="newName"
-        [value]="product.name"
+        [(ngModel)]="productName"
+        placeholder="New name..."
+        autocomplete="off"
     >
     <button type="submit">Save</button>
 </form>

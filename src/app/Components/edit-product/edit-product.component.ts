@@ -12,6 +12,9 @@ export class EditProductComponent implements OnInit, OnDestroy {
   queryParamsSub: any;
 
   product: ProductInterf;
+  productName: string = '';
+  productNamePrev: string;
+
   allowEdit: number;
 
   constructor(
@@ -23,6 +26,8 @@ export class EditProductComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.paramsSub = this.route.params.subscribe((params: Params) => {
       this.product = this.shoppingService.getProductById(params.productId);
+      if (this.productNamePrev) return;
+      this.productNamePrev = this.product.name;
     })
     this.queryParamsSub = this.route.queryParams.subscribe((params: Params) => {
       this.allowEdit = +params.allowEdit;
@@ -36,13 +41,23 @@ export class EditProductComponent implements OnInit, OnDestroy {
 
   handleSubmit(e: Event): void {
     e.preventDefault();
-    const form: any = e.currentTarget;
-    this.shoppingService.editProduct(this.product.id, form.newName.value);
-    form.reset();
+    if (!this.productName.length || !this.productName.trim().length) return;
+    this.shoppingService.editProduct(this.product.id, this.productName);
     this.router.navigate(['../'], {
       relativeTo: this.route,
       preserveQueryParams: true
     })
+  }
+
+  canDeactivate(): boolean {
+    if (!this.allowEdit) return true;
+    if (this.productName !== this.productNamePrev) {
+      const question = confirm('Are you shure you want to leave?');
+      if (!question) return false;
+      this.productNamePrev = this.productName;
+      return question;
+    }
+    return true;
   }
 
 }
