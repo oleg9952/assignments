@@ -4,8 +4,8 @@
             <h2>Even</h2>
             <div class="even__body">
                 <app-even
-                    [appStatus]="appRuning"
-                    [numbers]="numbers"
+                    [count]="count$"
+                    [events]="eventsSubject"
                 ></app-even>
             </div>
         </div>
@@ -14,8 +14,8 @@
             <h2>Odd</h2>
             <div class="odd__body">
                 <app-odd
-                    [appStatus]="appRuning"
-                    [numbers]="numbers"
+                    [count]="count$"
+                    [events]="eventsSubject"
                 ></app-odd>
             </div>
         </div>

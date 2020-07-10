@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { interval, Subscription, from } from 'rxjs';
+import { interval, Subscription, from, Observable, Subject } from 'rxjs';
 import { filter, toArray } from 'rxjs/operators';
 
 @Component({
@@ -10,41 +10,25 @@ import { filter, toArray } from 'rxjs/operators';
 export class AppComponent {
   numbers: Array<number> = [];
 
-  appRuning: boolean = false;
-  
-  numGenSub: Subscription;
-  // numRetreaverObs: Subscription;
+  eventsSubject: Subject<string> = new Subject();
+
+  count$: Observable<number> = new Observable(observer => {
+    let counter: number = 0;
+
+    setInterval(() => {
+      if (counter >= 10) {
+        observer.complete();
+      }
+      counter += 1;
+      observer.next(counter);
+    }, 1000)
+  });
 
   start(): void {
-    this.numGenSub = interval(1000)
-      .subscribe(count => {
-        this.numbers.push(count)
-      });
-    this.appRuning = true;
-
-    // this.retrEven()
+    this.eventsSubject.next('start')
   }
 
   end(): void {
-    this.numGenSub.unsubscribe();
-    this.appRuning = false;
-    // this.numRetreaverObs.unsubscribe();
+    this.eventsSubject.next('end');
   }
-
-  // retrEven(): void {
-  //   this.numRetreaverObs = from(this.numbers)
-  //     .pipe(
-  //       filter((num: any) => num % 2 === 0),
-  //       toArray()
-  //     )
-  //     .subscribe(x => console.log(x))
-  // }
-
-  // getEven(data: Array<number>): Array<number> {
-  //   return data.filter((num: number) => num % 2 === 0);
-  // }
-
-  // getOdd(data: Array<number>): Array<number> {
-  //   return data.filter((num: number) => num % 2 !== 0);
-  // }
 }

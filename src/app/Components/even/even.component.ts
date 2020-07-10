@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { numberItem } from 'src/app/Utils/animations';
-import { Subscription, from } from 'rxjs';
-import { filter, toArray } from 'rxjs/operators';
+import { Subscription, Observable, Subject } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 
 @Component({
@@ -12,40 +12,30 @@ import { filter, toArray } from 'rxjs/operators';
     numberItem
   ]
 })
-export class EvenComponent implements OnInit {
-  @Input() appStatus: boolean;
-  @Input() numbers: Array<number>;
-  
-  sub: Subscription;
-  
+export class EvenComponent implements OnInit, OnDestroy {
+  private countSub: Subscription;
+  private eventsSub: Subscription;
+
+  @Input() count: Observable<number>;
+  @Input() events: Subject<string>;
+
   even: Array<number> = [];
 
   constructor() { }
 
   ngOnInit(): void {
-    this.sub = from(this.numbers)
-      .pipe(
-        filter((num: any) => num % 2 === 0),
-        toArray()
-      ).subscribe((result: Array<number>) => {
-        this.even = result;
-      })
+    this.eventsSub = this.events.subscribe((action) => {
+      if (action === 'start') {
+        this.countSub = this.count.pipe(filter(num => num % 2 === 0))
+          .subscribe(num => this.even.push(num));
+        return;
+      }
+      this.countSub.unsubscribe();
+    });
   }
 
-  // getEven(): Array<number> {
-  //   if (this.appStatus) {
-  //     this.sub = from(this.numbers)
-  //       .pipe(
-  //         filter((num: any) => num % 2 === 0),
-  //         toArray()
-  //       ).subscribe((result: Array<number>) => {
-  //         this.even = result;
-  //         console.log(result)
-  //       })
-  //   } else {
-  //     if (!this.sub) return;
-  //     this.sub.unsubscribe();
-  //   }
-  //   return this.even;
-  // }
+  ngOnDestroy(): void {
+    this.countSub.unsubscribe();
+    this.eventsSub.unsubscribe();
+  }  
 }
