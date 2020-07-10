@@ -2,6 +2,9 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 10px;
+    position: relative;
+    transition: .3s;
+    min-height: 50px;
     .odd__item {
         background-color: #ff934a;
         display: flex;
@@ -12,5 +15,18 @@
         font-size: 18px;
         color: #fff;
         height: 50px;
+    }
+    button {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        transform: translateY(calc(100% + 20px));
+        cursor: pointer;
+        padding: 10px;
+        color: #fff;
+        background-color: green;
+        border: none;
+        outline: none;
+        font-size: 18px;
     }
 }

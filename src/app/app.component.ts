@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { interval, Subscription, from, Observable, Subject } from 'rxjs';
-import { filter, toArray } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import ACTIONS from './Utils/actions';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +8,7 @@ import { filter, toArray } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  numbers: Array<number> = [];
-
-  eventsSubject: Subject<string> = new Subject();
+  eventsSubject: Subject<string> = new Subject<string>();
 
   count$: Observable<number> = new Observable(observer => {
     let counter: number = 0;
@@ -25,10 +23,10 @@ export class AppComponent {
   });
 
   start(): void {
-    this.eventsSubject.next('start')
+    this.eventsSubject.next(ACTIONS.start)
   }
 
   end(): void {
-    this.eventsSubject.next('end');
+    this.eventsSubject.next(ACTIONS.end);
   }
 }

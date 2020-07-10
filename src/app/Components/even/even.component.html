@@ -1,7 +1,10 @@
-<div class="even">
+<div class="even"
+    [ngStyle]="{backgroundColor: paint ? 'green' : ''}"
+>
     <div 
         class="even__item" 
         @popUp
         *ngFor="let num of even"
     >{{ num }}</div>
+    <button (click)="handlePaint()">Pait Odd</button>
 </div>
