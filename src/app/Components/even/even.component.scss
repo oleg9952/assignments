@@ -1,10 +1,16 @@
-.even__item {
-    background-color: #a9c7ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 17px;
-    border-radius: 50%;
-    font-size: 18px;
-    color: #fff;
+.even {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 10px;
+    .even__item {
+        background-color: #a9c7ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 17px;
+        border-radius: 50%;
+        font-size: 18px;
+        color: #fff;
+        height: 50px;
+    }
 }

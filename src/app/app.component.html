@@ -3,25 +3,26 @@
         <div class="even">
             <h2>Even</h2>
             <div class="even__body">
-                <app-odd
-                    *ngFor="let odd of getOdd(numbers)"
-                    [numOdd]="odd"
-                ></app-odd>
+                <app-even
+                    [appStatus]="appRuning"
+                    [numbers]="numbers"
+                ></app-even>
             </div>
         </div>
 
         <div class="odd">
             <h2>Odd</h2>
             <div class="odd__body">
-                <app-even
-                    *ngFor="let even of getEven(numbers)"
-                    [numEven]="even"
-                ></app-even>
+                <app-odd
+                    [appStatus]="appRuning"
+                    [numbers]="numbers"
+                ></app-odd>
             </div>
         </div>
     </div>
     
     <app-controls
-        (payload)="addNumber($event)"
+        (onStart)="start()"
+        (onEnd)="end()"
     ></app-controls>
 </div>
