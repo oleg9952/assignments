@@ -1,0 +1,27 @@
+<div class="wrapper">
+    <div class="output__holder">
+        <div class="even">
+            <h2>Even</h2>
+            <div class="even__body">
+                <app-odd
+                    *ngFor="let odd of getOdd(numbers)"
+                    [numOdd]="odd"
+                ></app-odd>
+            </div>
+        </div>
+
+        <div class="odd">
+            <h2>Odd</h2>
+            <div class="odd__body">
+                <app-even
+                    *ngFor="let even of getEven(numbers)"
+                    [numEven]="even"
+                ></app-even>
+            </div>
+        </div>
+    </div>
+    
+    <app-controls
+        (payload)="addNumber($event)"
+    ></app-controls>
+</div>

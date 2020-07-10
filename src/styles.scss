@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@use './app/Utils/reset.scss';
+@use './app/Utils/fonts.scss' as fonts;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font: fonts.$kanit;
+}
