@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { numberItem } from 'src/app/Utils/animations';
 import { Subscription, Observable, Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import ACTIONS from '../../Utils/actions';
     numberItem
   ]
 })
-export class OddComponent implements OnInit {
+export class OddComponent implements OnInit, OnDestroy {
   private countSub: Subscription;
   private eventsSub: Subscription;
 
