@@ -1,38 +1,78 @@
 <div class="wrapper">
-  <form class="form">
+  <form class="form"
+    (ngSubmit)="onSubmit()"
+    #form="ngForm"
+  >
     <h1>Form</h1>
     <div class="form__body">
-      <label for="name">Name:</label>
-      <input 
-        type="text" 
-        name="name" 
-        id="name"
-        placeholder="Here comes your name..."
-      >
+      <div class="form__section">
+        <label for="name">Name:</label>
+        <input 
+          type="text" 
+          name="name" 
+          id="name"
+          placeholder="Here comes your name..."
+          required
+          ngModel
+        >
+        <div class="errors">
+          <p>This field is required!</p>
+        </div>
+      </div>
 
-      <label for="email">Email:</label>
-      <input 
-        type="email" 
-        name="email" 
-        id="email"
-        placeholder="Here comes your email..."
-      >
+      <div class="form__section">
+        <label for="email">Email:</label>
+        <input 
+          type="email" 
+          name="email" 
+          id="email"
+          placeholder="Here comes your email..."
+          required
+          email
+          ngModel
+        >
+        <div class="errors">
+          <p>Email is invalid!</p>
+        </div>
+      </div>
 
-      <label for="stack">Stack:</label>
-      <select name="stack" id="stack">
-        <option value="angular">Angular</option>
-        <option value="react">React</option>
-        <option value="flutter">Flutter</option>
-      </select>
+      <div class="form__section">
+        <label for="stack">Stack:</label>
+        <select 
+          name="stack" 
+          id="stack"
+          [ngModel]="'angular'"
+          ngModel
+        >
+          <option value="angular">Angular</option>
+          <option value="react">React</option>
+          <option value="flutter">Flutter</option>
+        </select>
+      </div>
 
-      <label for="password">Password:</label>
-      <input 
-        type="password" 
-        name="password" 
-        id="password"
-        placeholder="Here comes your password..."
-      >
+      <div class="form__section">
+        <label for="password">Password:</label>
+        <input 
+          type="password" 
+          name="password" 
+          id="password"
+          placeholder="Here comes your password..."
+          minlength="6"
+          required
+          ngModel
+        >
+        <div class="errors">
+          <p>Password should contain 6 or more characters!</p>
+        </div>
+      </div>
     </div>
-    <button type="submit">Submit</button>
+    <button type="submit"
+      [disabled]="form.invalid"
+    >Submit</button>
+    <div class="form__output"
+      *ngIf="submitedData"
+    >
+      <pre>{{ submitedData | json}}</pre>
+    </div>
   </form>
 </div>

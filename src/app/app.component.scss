@@ -1,3 +1,5 @@
+$shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
 .wrapper {
     min-height: 100vh;
     background-image: linear-gradient(to top, 
@@ -17,16 +19,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 20px;
 }
 
 .form {
     background-color: #fff;
     min-height: 200px;
     width: 350px;
-    box-shadow: 
-        0 10px 20px rgba(0,0,0,0.19), 
-        0 6px 6px rgba(0,0,0,0.23);
+    position: relative;
+    box-shadow: $shadow;
     padding: 10px;
+    margin-bottom: 150px;
     h1 {
         font-weight: bold;
         font-size: 28px;
@@ -35,19 +38,31 @@
     &__body {
         display: grid;
         font-size: 18px;
+        .form__section {
+            margin-bottom: 15px;
+            min-height: 80px;
+        }
+        .errors {
+            color: red;
+            font-size: 15px;
+            display: none;
+        }
         label {
             margin-bottom: 5px;
+            display: block;
         }
         input {
             outline: none;
             height: 35px;
             padding: 0 10px;
-            border: 3px solid #ed9000;
-            margin-bottom: 15px;
+            border: 3px solid #ccc;
             font-size: 15px;
             font-weight: bold;
+            margin-bottom: 5px;
             color: #000;
             transition: .3s;
+            display: block;
+            width: 100%;
         }
         input::placeholder {
             color: #ccc;
@@ -61,11 +76,28 @@
         select {
             margin-bottom: 15px;
             outline: none;
-            border: 3px solid #ed9000;
+            border: 3px solid #ccc;
             height: 35px;
             padding: 0 10px;
             cursor: pointer;
             font-weight: bold;
+            transition: .3s;
+            width: 100%;
+        }
+        select:focus {
+            background-color: rgba(237, 142, 0, .2);
+        }
+
+
+        input.ng-touched.ng-invalid {
+            border-color: red;
+        }
+        input.ng-touched.ng-valid {
+            border-color: #00d300;
+        }
+
+        input.ng-touched.ng-invalid + .errors {
+            display: block;
         }
     }
     button {
@@ -81,8 +113,32 @@
         outline: none;
         transition: .3s;
     }
+    button:disabled {
+        background-color: #ccc;
+        color: #fff;
+        border-color: #ccc;
+        pointer-events: none;
+    }
     button:hover {
         background-color: #ed9000;
         color: #fff;
+    }
+    &__output {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, calc(130% + 15px)) scale(.8);
+        opacity: 0;
+        background-color: #fff;
+        box-shadow: $shadow;
+        padding: 5px;
+        animation: animateOutput .5s forwards;
+    }
+}
+
+@keyframes animateOutput {
+    100% {
+        opacity: 1;
+        transform: translate(-50%, calc(100% + 15px)) scale(1);
     }
 }
