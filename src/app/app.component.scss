@@ -56,6 +56,10 @@
             cursor: pointer;
         }
 
+        input.ng-touched.ng-invalid {
+            background-color: orange;
+        }
+
         .error__message {
             color: orange;
             font-weight: bold;
@@ -76,6 +80,11 @@
         background-color: rgba(255, 255, 255, .5);
         transition: .3s;
         color: #fff;
+        outline: none;
+    }
+    button:disabled {
+        background-color: #ccc;
+        pointer-events: none;
     }
     button:hover {
         background-color: #fff;

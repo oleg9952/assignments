@@ -1,39 +1,67 @@
 <div class="wrapper">
-  <form class="form">
+  <form class="form"
+    [formGroup]="form"
+    (ngSubmit)="submitForm()"
+  >
     <h1>Form</h1>
     <div class="form__body">
       <div class="form__section">
         <label for="name">Name:</label>
         <input 
           type="text" 
-          name="name" 
           id="name"
+          formControlName="name"
         >
-        <p class="error__message">Lorem, ipsum dolor!</p>
+        <div *ngIf="form.get('name').touched && form.get('name').invalid">
+          <p 
+            class="error__message"
+            *ngIf="form.get('name').errors.required"
+          >Name is required!</p>
+          <p 
+            class="error__message"
+            *ngIf="form.get('name').errors.prohibitedName"
+          >You can not use this name!</p>
+          <p 
+            class="error__message"
+            *ngIf="form.get('name').errors.prohibitedNameAsync"
+          >You can not use this name! || Async</p>
+        </div>
       </div>
 
       <div class="form__section">
         <label for="email">Email:</label>
         <input 
           type="email" 
-          name="email" 
           id="email"
+          formControlName="email"
         >
-        <p class="error__message">Lorem, ipsum dolor!</p>
+        <div *ngIf="form.get('email').touched && form.get('email').invalid">
+          <p class="error__message"
+            *ngIf="form.get('email').errors.required"
+          >Email is required!</p>
+          <p class="error__message"
+            *ngIf="form.get('email').errors.email"
+          >Wrong email!</p>
+        </div>
       </div>
 
       <div class="form__section">
         <label for="framework">Framework:</label>
-        <select name="framework" id="framework">
+        <select name="framework" id="framework"
+          formControlName="framework"
+        >
           <option value="angular">Angular</option>
           <option value="react">React</option>
           <option value="vue">Vue</option>
         </select>
-        <p class="error__message">Lorem, ipsum dolor!</p>
       </div>
 
-      <button class="form__add">Add</button>
+      <button type="button">Add</button>
     </div>
-    <button type="submit" class="form__submit">Submit</button>
+    <button 
+      type="submit" 
+      
+    >Submit</button>
+    <!-- [disabled]="form.status === 'INVALID'" -->
   </form>
 </div>
