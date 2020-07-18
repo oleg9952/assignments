@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     background: #55b9f3;
+    padding: 50px 0;
 }
 
 .form {
@@ -28,6 +29,12 @@
             margin-bottom: 15px;
             min-height: 82px;
         }
+
+        .dynamic {
+            padding-top: 10px;
+            margin-bottom: 0;
+        }
+
         label {
             color: rgba(255, 255, 255, .8);;
             display: block;
@@ -59,6 +66,25 @@
         input.ng-touched.ng-invalid {
             background-color: orange;
         }
+        input.ng-touched.ng-valid {
+            background-color: rgba(13, 231, 31, .8);
+        }
+
+        .validation {
+            display: none;
+            width: 17px;
+            height: 17px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            border-right: none;
+            border-bottom: none;
+            transform: translateX(10px) rotate(0deg);
+            animation: rotate .3s infinite linear;
+        }
+
+        input.ng-touched.ng-pending + .validation {
+            display: block;
+        }
 
         .error__message {
             color: orange;
@@ -89,5 +115,15 @@
     button:hover {
         background-color: #fff;
         color: #55b9f3;
+    }
+
+    .submit__btn {
+        background-color: rgba(13, 231, 31, .8);
+    }
+}
+
+@keyframes rotate {
+    100% {
+        transform: translateX(10px) rotate(360deg);
     }
 }

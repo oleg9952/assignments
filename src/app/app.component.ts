@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { CustomValidators } from './Validators/custom.validators';
 
 @Component({
@@ -9,9 +9,13 @@ import { CustomValidators } from './Validators/custom.validators';
 })
 export class AppComponent implements OnInit {
   form: FormGroup;
+
+  get controls() {
+    return (this.form.get('otherFrameworks') as FormArray).controls;
+  }
   
   ngOnInit(): void {
-    this.initForm()
+    this.initForm();
   }
 
   initForm(): void {
@@ -19,18 +23,23 @@ export class AppComponent implements OnInit {
       name: new FormControl(null, [
         Validators.required,
         CustomValidators.prohibitedName
-      ], CustomValidators.prohibitedNameAsync.bind(this)),
+      ], CustomValidators.prohibitedNameAsync),
       email: new FormControl(null, [
         Validators.required,
         Validators.email
       ]),
-      framework: new FormControl('angular')
-    })
+      framework: new FormControl('angular'),
+      otherFrameworks: new FormArray([])
+    });
   }
 
   submitForm(): void {
-    console.log(this.form)
+    console.log(this.form);
   }
 
-
+  onAddFramework(): void {
+    const control = new FormControl(null, Validators.required);
+    (<FormArray>this.form.get('otherFrameworks')).push(control)
+    console.log(this.controls)
+  }
 }

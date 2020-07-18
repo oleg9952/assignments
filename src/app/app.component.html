@@ -11,6 +11,7 @@
           type="text" 
           id="name"
           formControlName="name"
+          autocomplete="off"
         >
         <div *ngIf="form.get('name').touched && form.get('name').invalid">
           <p 
@@ -26,6 +27,7 @@
             *ngIf="form.get('name').errors.prohibitedNameAsync"
           >You can not use this name! || Async</p>
         </div>
+        <div class="validation"></div>
       </div>
 
       <div class="form__section">
@@ -56,12 +58,29 @@
         </select>
       </div>
 
-      <button type="button">Add</button>
+      <button type="button" (click)="onAddFramework()">Add Framework</button>
+
+      <div formArrayName="otherFrameworks">
+        <div class="form__section dynamic"
+          *ngFor="let control of controls; let i = index"
+        >
+          <input 
+            type="text"
+            placeholder="Type in your Framework..."
+            [formControlName]="i"
+          >
+          <div *ngIf="control.touched && control.invalid">
+            <p class="error__message"
+              >This field can't be empty!</p>
+          </div>
+        </div>
+      </div>
+      
     </div>
     <button 
       type="submit" 
-      
+      class="submit__btn"
+      [disabled]="!form.valid || form.pending"
     >Submit</button>
-    <!-- [disabled]="form.status === 'INVALID'" -->
   </form>
 </div>
