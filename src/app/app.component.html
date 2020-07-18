@@ -83,4 +83,7 @@
       [disabled]="!form.valid || form.pending"
     >Submit</button>
   </form>
+  <div class="output" *ngIf="formOutput">
+    <pre>{{ formOutput | json }}</pre>
+  </div>
 </div>

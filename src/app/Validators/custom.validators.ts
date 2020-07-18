@@ -9,10 +9,10 @@ interface ValidationError {
 export class CustomValidators {
     static prohibitedName(control: FormControl): ValidationError {
         const value = control.value ? control.value.toLowerCase() : null;
-        if (['james', 'alex', 'pikachu', 'test'].includes(value)) {
-            return {prohibitedName: true}
+        if (['james', 'alex', 'pikachu', 'test', 'admin'].includes(value)) {
+            return {prohibitedName: true};
         }
-        return null
+        return null;
     }
 
     static prohibitedNameAsync(control: FormControl): Promise<ValidationError | null> | Observable<ValidationError | null> {
@@ -20,7 +20,7 @@ export class CustomValidators {
             map(names => {
                 const value = control.value ? control.value.toLowerCase() : null;
                 if (names.includes(value)) {
-                    return { 'prohibitedNameAsync': true }
+                    return { 'prohibitedNameAsync': true };
                 } else {
                     return null;
                 }

@@ -1,6 +1,7 @@
 .wrapper {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: #55b9f3;
@@ -9,6 +10,7 @@
 
 .form {
     width: 450px;
+    margin-bottom: 30px;
     min-height: 300px;
     padding: 20px;
     border-radius: 30px;
@@ -122,8 +124,27 @@
     }
 }
 
+.output {
+    padding: 15px;
+    color: #fff;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #4da7db, #5bc6ff);
+    box-shadow:  20px 20px 60px #489dcf, 
+                -20px -20px 60px #62d5ff;
+    opacity: 0;
+    transform: translateY(30px) ;
+    animation: show .5s forwards;
+}
+
 @keyframes rotate {
     100% {
         transform: translateX(10px) rotate(360deg);
+    }
+}
+
+@keyframes show {
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
     }
 }
