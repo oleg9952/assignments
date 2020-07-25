@@ -1,21 +1,26 @@
-<form>
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+>
   <input 
     type="text" 
     placeholder="Post title..."
+    formControlName="postTitle"
   >
   <textarea
     placeholder="Post message..."
+    formControlName="postMessage"
   ></textarea>
   <div class="controls">
-    <button type="submit">Add Post</button>
-    <button type="button">Delete Posts</button>
+    <button type="submit" [disabled]="!form.valid">Add Post</button>
+    <button type="button" (click)="onDelete()">Delete Posts</button>
   </div>
   <div class="output">
     <h1>Your posts</h1>
-    <div class="post">
-      <p class="post__title">Title</p>
+    <div class="post" *ngFor="let post of posts">
+      <p class="post__title">{{ post.title }}</p>
       <hr>
-      <p class="post__message">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio repudiandae labore, assumenda veniam optio fuga?</p>
+      <p class="post__message">{{ post.message }}</p>
     </div>
   </div>
 </form>

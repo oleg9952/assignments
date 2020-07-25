@@ -11,6 +11,10 @@ form {
         font-size: 15px;
         font-family: 'Roboto', sans-serif;
     }
+    input.ng-touched.ng-invalid,
+    textarea.ng-touched.ng-invalid {
+        border-color: red;
+    }
     input {
         height: 35px;
     }
@@ -28,6 +32,9 @@ form {
             padding: 6px 0;
             cursor: pointer;
         }
+        button:disabled {
+            pointer-events: none;
+        }
     }
     .output {
         h1 {
@@ -41,7 +48,7 @@ form {
             padding: 10px;
             font-size: 15px;
             margin: 10px 0;
-            background-color: #ccc;
+            background-color: #000;
             color: #fff;
             .post__title {
                 font-weight: bold;
