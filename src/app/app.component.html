@@ -17,10 +17,17 @@
   </div>
   <div class="output">
     <h1>Your posts</h1>
-    <div class="post" *ngFor="let post of posts">
-      <p class="post__title">{{ post.title }}</p>
-      <hr>
-      <p class="post__message">{{ post.message }}</p>
+    <div *ngIf="posts.length && !isLoading && !error.length">
+      <div class="post" *ngFor="let post of posts">
+        <p class="post__title">{{ post.title }}</p>
+        <hr>
+        <p class="post__message">{{ post.message }}</p>
+      </div>
+    </div>
+    <p class="empty" *ngIf="!posts.length && !isLoading && !error.length">There are no posts yet...</p>
+    <p class="empty" *ngIf="error.length">{{ error }}</p>
+    <div class="loader" *ngIf="isLoading && !error.length">
+      <div></div>
     </div>
   </div>
 </form>

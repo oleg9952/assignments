@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Post } from './post.interface';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -31,13 +31,16 @@ export class PostsService {
           return posts
         })
       )
-      .subscribe(posts => this.dataSubject.next(posts))
+      .subscribe(
+        (posts: Array<Post>) => this.dataSubject.next(posts),
+        (error) => this.dataSubject.error(error)
+      )
   }
 
   addPost(post: Post): void {
     this.http.post('https://task-13-f84df.firebaseio.com/posts.json', post).subscribe(
       () => this.getPosts(),
-      error => console.log(`Failed:`, error)
+      (error) => this.dataSubject.error(error)
     );
   }
 
@@ -45,7 +48,7 @@ export class PostsService {
     this.http.delete('https://task-13-f84df.firebaseio.com/posts.json')
       .subscribe(
         () => this.getPosts(),
-        error => console.log(error)
+        (error) => this.dataSubject.error(error)
       )
   }
 }

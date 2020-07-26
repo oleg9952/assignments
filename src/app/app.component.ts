@@ -13,7 +13,9 @@ export class AppComponent implements OnInit {
   private dataSub: Subscription;
 
   form: FormGroup;
-  posts: Post[];
+  posts: Post[] = [];
+  isLoading = true;
+  error = '';
 
   constructor(
     private postsService: PostsService
@@ -22,9 +24,17 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     this.postsService.getPosts();
-    this.dataSub = this.postsService.dataSubject.subscribe(data => {
-      this.posts = data;
-    })
+    this.dataSub = this.postsService.dataSubject.subscribe(
+      (data: Array<Post>) => {
+        this.error = '';
+        this.isLoading = false;
+        this.posts = data;
+      },
+      (error) => {
+        this.isLoading = false;
+        this.error = error.message;
+      }
+    )
   }
 
   initForm(): void {
@@ -35,7 +45,7 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.form.value);
+    this.isLoading = true;
     this.postsService.addPost({
       title: this.form.value['postTitle'],
       message: this.form.value['postMessage']
@@ -44,7 +54,8 @@ export class AppComponent implements OnInit {
   }
 
   onDelete(): void {
-    this.postsService.getPosts();
+    this.isLoading = true;
+    this.postsService.deletePosts();
   }
 
 }

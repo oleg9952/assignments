@@ -13,7 +13,13 @@ form {
     }
     input.ng-touched.ng-invalid,
     textarea.ng-touched.ng-invalid {
-        border-color: red;
+        background-color: red;
+        color: #fff;
+    }
+    input.ng-touched.ng-valid,
+    textarea.ng-touched.ng-valid {
+        background-color: #23f52e;
+        color: #fff;
     }
     input {
         height: 35px;
@@ -61,5 +67,32 @@ form {
                 text-align: justify;
             }
         }
+        .empty {
+            text-align: center;
+        }
+        .loader {
+            height: 50px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            div {
+                width: 0px;
+                height: 0px;
+                border-radius: 50%;
+                border: 25px solid;
+                border-top-color: #b3ff00;
+                border-right-color: #88ff00;
+                border-bottom-color: #00eeff;
+                border-left-color: #00d9ff;
+                animation: spin .5s infinite linear;
+            }
+        }
+    }
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
     }
 }
