@@ -16,14 +16,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.sub = this.route.queryParams.subscribe((params: Params) => {
-      if (!params['message']) return;
-      this['message'] = params['message'];
-    })    
+    // this.sub = this.route.queryParams.subscribe((params: Params) => {
+    //   if (!params['message']) return;
+    //   this['message'] = params['message'];
+    // })    
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    // this.sub.unsubscribe();
   }
 
 }

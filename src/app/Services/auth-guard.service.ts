@@ -18,10 +18,6 @@ export class AuthGuardService implements CanActivate {
         state: RouterStateSnapshot
     ): Observable<boolean> | Promise<boolean> | boolean {
         if (this.authService.checkAuth()) return true;
-        this.router.navigate(['/'], {
-            queryParams: {
-                message: 'Sign in to see the Shopping List!'
-            }
-        });
+        this.router.navigate(['/']);
     }
 }
