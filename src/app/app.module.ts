@@ -10,11 +10,9 @@ import { NotificationComponent } from './Components/notification/notification.co
 import { TabsComponent } from './Components/tabs/tabs.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { AddPurchaseComponent } from './Pages/add-purchase/add-purchase.component';
-import { ShoppingListComponent } from './Pages/shopping-list/shopping-list.component';
 import { NotFoundComponent } from './Pages/not-found/not-found.component';
-import { ProductDetailsComponent } from './Components/product-details/product-details.component';
-import { EditProductComponent } from './Components/edit-product/edit-product.component';
 import { AuthControlsComponent } from './Components/auth-controls/auth-controls.component';
+import { ShoppingListModule } from './Pages/shopping-list/shopping-list.module';
 
 @NgModule({
   declarations: [
@@ -24,17 +22,15 @@ import { AuthControlsComponent } from './Components/auth-controls/auth-controls.
     TabsComponent,
     HomeComponent,
     AddPurchaseComponent,
-    ShoppingListComponent,
     NotFoundComponent,
-    ProductDetailsComponent,
-    EditProductComponent,
     AuthControlsComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ShoppingListModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
