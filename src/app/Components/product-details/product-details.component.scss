@@ -1,0 +1,26 @@
+.productdetails {
+    p {
+        font-size: 18px;
+        padding: 5px 0;
+        span {
+            font-weight: bold;
+        }
+    }
+    .mb {
+        margin-bottom: 15px;
+    }
+    .edit-btn {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        color: #fff;
+        background-color: #00a1da;
+        width: 150px;
+        margin: 0 auto;
+        transition: .3s;
+    }
+    .edit-btn:hover {
+        background-color: #47c4f1;
+    }
+}
