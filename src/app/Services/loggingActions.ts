@@ -14,5 +14,8 @@ export default {
     delete: {
         type: 'delete',
         message: 'You\'ve deleted'
+    },
+    error: {
+        type: 'error'
     }
 }

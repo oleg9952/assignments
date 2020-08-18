@@ -1,29 +1,18 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ProductInterf } from 'src/app/Services/shopping.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ShoppingService } from 'src/app/Services/shopping.service';
 
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.scss']
 })
-export class ShoppingListComponent implements OnInit, OnDestroy {
-  sub: any;
-
-  shoppingList: Array<ProductInterf>;
-
+export class ShoppingListComponent implements OnInit {
   constructor(
-    private route: ActivatedRoute
+    public shoppingService: ShoppingService
   ) { }
 
   ngOnInit(): void {
-    this.sub = this.route.data.subscribe((params: Params) => {
-      this.shoppingList = params.shoppingList;
-    })
+    if (this.shoppingService.shoppingList.length) return;
+    this.shoppingService.getProducts();
   }
-
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
-  }
-
 }

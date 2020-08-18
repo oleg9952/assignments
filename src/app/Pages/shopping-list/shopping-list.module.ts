@@ -17,9 +17,6 @@ const routes: Routes = [
       path: 'shopping-list', 
       component: ShoppingListComponent,
       canActivate: [AuthGuardService],
-      resolve: {
-          shoppingList: ShoppingResolverService
-      }, 
       children: [
           { 
               path: ':productId', 

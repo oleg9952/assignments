@@ -17,13 +17,22 @@ export class LoggingService {
 
   constructor() { }
 
-  notify(productName: string, type: string): void {
+  notify(productName?: string, type?: string, error?: { message: string }): void {
     const id = uuidv4();
-    this.notifications.push(<NotificInterf>{
-      id,
-      type,
-      message: `${ACTIONS[type].message} ${productName}`
-    });
+    if (!error) {
+      this.notifications.push(<NotificInterf>{
+        id,
+        type,
+        message: `${ACTIONS[type].message} ${productName}`
+      });
+    } else {
+      this.notifications.push(<NotificInterf>{
+        id,
+        type: ACTIONS.error.type,
+        message: error.message
+      });
+    }
+
     this.clearNotifi(id);
   }
 

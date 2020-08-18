@@ -42,7 +42,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
   handleSubmit(e: Event): void {
     e.preventDefault();
     if (!this.productName.length || !this.productName.trim().length) return;
-    this.shoppingService.editProduct(this.product.id, this.productName);
+    this.shoppingService.editProduct(this.product.id, this.product.ref, this.productName, this.product);
     this.router.navigate(['../'], {
       relativeTo: this.route,
       // preserveQueryParams: true

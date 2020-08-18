@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { v4 as uuidv4 } from 'uuid';
+import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { FormDataInterf } from '../Components/form/form.component';
 import { LoggingService } from './logging.service';
 import ACTIONS from './loggingActions';
@@ -7,79 +10,83 @@ import ACTIONS from './loggingActions';
 export interface ProductInterf {
   id: string;
   name: string;
-  amount: number
+  amount: number,
+  ref: string;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingService {
-  shoppingList: Array<ProductInterf> = [
-    {
-      id: '1',
-      name: 'Tomato',
-      amount: 3
-    },
-    {
-      id: '2',
-      name: 'Potato',
-      amount: 6
-    },
-    {
-      id: '3',
-      name: 'Cucumber',
-      amount: 2
-    },
-    {
-      id: '4',
-      name: 'Cabbage',
-      amount: 3
-    },
-    {
-      id: '5',
-      name: 'Apple',
-      amount: 1
-    },
-    {
-      id: '6',
-      name: 'Strawberry',
-      amount: 8
-    }
-  ];
+  dataProviderSubject: Subject<Array<ProductInterf>> = new Subject();
 
-  constructor(private loggingService: LoggingService) { }
+  shoppingList: Array<ProductInterf> = [];
+
+  constructor(
+    private loggingService: LoggingService,
+    private http: HttpClient
+  ) { }
+
+  getProducts(): void {
+    this.http.get('https://angular-final-task.firebaseio.com/products.json')
+      .pipe(
+        map((resp: any) => {
+          const products: Array<ProductInterf> = [];
+          for(const key in resp) {
+            if (resp.hasOwnProperty(key)) {
+              const ref = Object.keys(resp[key])[0];
+              products.push({
+                ...resp[key][ref],
+                ref,
+                id: key
+              })
+            }
+          }
+          return products;
+        })
+      ).subscribe(
+        (products: Array<ProductInterf>) => {
+          this.shoppingList = products;
+          this.dataProviderSubject.next(this.shoppingList);
+        },
+        (error) => this.loggingService.notify(null, null, error.message)
+      )
+  }
 
   getProductById(id: string): ProductInterf {
     return this.shoppingList.find((product: ProductInterf) => product.id === id);
   }
 
-  addNewProduct(product: FormDataInterf, cloning?: boolean): void {
-    this.shoppingList.push(<ProductInterf>{
-      ...product,
-      id: uuidv4()
-    });
-    if (cloning) return;
-    this.loggingService.notify(product.name, ACTIONS.add.type);
-  }
-
-  cloneProduct(product: ProductInterf): void {
-    this.addNewProduct(product, true);
-    this.loggingService.notify(product.name, ACTIONS.clone.type);
+  addNewProduct(product: FormDataInterf): void {
+    this.http.post(`https://angular-final-task.firebaseio.com/products/${uuidv4()}.json`, product).subscribe(
+      () => {
+        this.getProducts();
+        this.loggingService.notify(product.name, ACTIONS.add.type);
+      },
+      (error) => this.loggingService.notify(null, null, error.message)
+    )
   }
 
   deleteProduct(productId: string): void {
-    const index = this.shoppingList.findIndex((prod: ProductInterf) => prod.id === productId);
-    if (index === -1) return;
-    this.loggingService.notify(this.shoppingList[index].name, ACTIONS.delete.type);
-    this.shoppingList.splice(index, 1);
+    this.http.delete(`https://angular-final-task.firebaseio.com/products/${productId}.json`).subscribe(
+      () => {
+        this.loggingService.notify(this.getProductById(productId).name, ACTIONS.delete.type);
+        this.getProducts();
+      },
+      (error) => this.loggingService.notify(null, null, error.message)
+    )
   }
 
-  editProduct(productId: string, productName: string): void {
-    for (const product of this.shoppingList) {
-      if (product.id === productId) {
-        product.name = productName;
+  editProduct(productId: string, ref: string, productName: string, product: ProductInterf): void {
+    this.http.put(`https://angular-final-task.firebaseio.com/products/${productId}/${ref}.json`, {
+      name: productName,
+      amount: product.amount
+    }).subscribe(
+      () => {
         this.loggingService.notify(productName, ACTIONS.edit.type);
+        this.getProducts();
       }
-    }
+    );
   }
+
 }

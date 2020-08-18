@@ -14,7 +14,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private shoppingService: ShoppingService
+    public shoppingService: ShoppingService
   ) { }
 
   ngOnInit(): void {
@@ -29,9 +29,13 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
 
   goToEdit(): void {
     this.router.navigate(['edit'], {
-      relativeTo: this.route,
-      // preserveQueryParams: true
+      relativeTo: this.route
     });
+  }
+
+  onDelete(): void {
+    this.shoppingService.deleteProduct(this.product.id);
+    this.router.navigate(['shopping-list'])
   }
 
 }

@@ -20,6 +20,10 @@
         margin: 0 auto;
         transition: .3s;
     }
+    .edit-btn:last-child {
+        margin-top: 7px;
+        background-color: red;
+    }
     .edit-btn:hover {
         background-color: #47c4f1;
     }
