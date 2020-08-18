@@ -1,14 +1,33 @@
 <div class="login">
-    <form class="form">
+    <form class="form"
+        [formGroup]="form"
+        (ngSubmit)="submitForm()"
+    >
         <div class="form__header">
             <h1>Log in / Register</h1>
         </div>
         <div class="form__body">
-            <input type="email" placeholder="Email...">
-            <input type="password" placeholder="Password...">
+            <input 
+                type="email" 
+                placeholder="Email..."
+                formControlName="email"
+            >
+            <input 
+                type="password" 
+                placeholder="Password..."
+                formControlName="password"
+            >
             <div class="form__body--controls">
-                <button>Log in</button>
-                <button>Register</button>
+                <button 
+                    [disabled]="!form.valid" 
+                    type="submit" 
+                    (click)="formAction(0)"
+                >Log in</button>
+                <button 
+                    [disabled]="!form.valid" 
+                    type="submit" 
+                    (click)="formAction(1)"
+                >Register</button>
             </div>
         </div>
     </form>

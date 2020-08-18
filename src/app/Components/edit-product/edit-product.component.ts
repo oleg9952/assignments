@@ -15,7 +15,7 @@ export class EditProductComponent implements OnInit, OnDestroy {
   productName: string = '';
   productNamePrev: string;
 
-  allowEdit: number;
+  // allowEdit: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,14 +29,14 @@ export class EditProductComponent implements OnInit, OnDestroy {
       if (this.productNamePrev) return;
       this.productNamePrev = this.product.name;
     })
-    this.queryParamsSub = this.route.queryParams.subscribe((params: Params) => {
-      this.allowEdit = +params.allowEdit;
-    })
+    // this.queryParamsSub = this.route.queryParams.subscribe((params: Params) => {
+    //   this.allowEdit = +params.allowEdit;
+    // })
   }
 
   ngOnDestroy(): void {
     this.paramsSub.unsubscribe();
-    this.queryParamsSub.unsubscribe();
+    // this.queryParamsSub.unsubscribe();
   }
 
   handleSubmit(e: Event): void {
@@ -45,12 +45,12 @@ export class EditProductComponent implements OnInit, OnDestroy {
     this.shoppingService.editProduct(this.product.id, this.productName);
     this.router.navigate(['../'], {
       relativeTo: this.route,
-      preserveQueryParams: true
+      // preserveQueryParams: true
     })
   }
 
   canDeactivate(): boolean {
-    if (!this.allowEdit) return true;
+    // if (!this.allowEdit) return true;
     if (this.productName !== this.productNamePrev) {
       const question = confirm('Are you shure you want to leave?');
       if (!question) return false;

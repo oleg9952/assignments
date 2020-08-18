@@ -30,7 +30,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   goToEdit(): void {
     this.router.navigate(['edit'], {
       relativeTo: this.route,
-      preserveQueryParams: true
+      // preserveQueryParams: true
     });
   }
 
