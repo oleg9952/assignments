@@ -15,6 +15,7 @@ import { NotFoundComponent } from './Pages/not-found/not-found.component';
 import { AuthControlsComponent } from './Components/auth-controls/auth-controls.component';
 import { ShoppingListModule } from './Pages/shopping-list/shopping-list.module';
 import { LoginComponent } from './Pages/login/login.component';
+import { SpinnerComponent } from './Components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { LoginComponent } from './Pages/login/login.component';
     NotFoundComponent,
     AuthControlsComponent,
     LoginComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

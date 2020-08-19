@@ -31,6 +31,10 @@
         align-items: center;
         padding: 5px;
     }
+
+    .error {
+        color: red !important;
+    }
 }
 
 @keyframes showNotif {

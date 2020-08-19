@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { AuthGuardService } from 'src/app/Services/auth-guard.service';
-import { ShoppingResolverService } from 'src/app/Services/shopping-resolver.service';
 import { EditDeactivateGuardService } from 'src/app/Services/edit-deactivate-guard.service';
 
 import { ProductResolverService } from 'src/app/Services/product-resolver.service';

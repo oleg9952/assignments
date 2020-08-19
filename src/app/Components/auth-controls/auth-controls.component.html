@@ -1,11 +1,11 @@
 <div class="authcontrols">
-    <div class="authcontrols__btn sign--in"
+    <!-- <div class="authcontrols__btn sign--in"
         *ngIf="!authService.checkAuth()"
         (click)="authService.signIn()"
     >
         <i class="fas fa-sign-in-alt"></i>
         <p>Sign In</p>
-    </div>
+    </div> -->
     <div class="authcontrols__btn sign--out"
         *ngIf="authService.checkAuth()"
         (click)="authService.signOut()"

@@ -18,8 +18,6 @@ export interface ProductInterf {
   providedIn: 'root'
 })
 export class ShoppingService {
-  dataProviderSubject: Subject<Array<ProductInterf>> = new Subject();
-
   shoppingList: Array<ProductInterf> = [];
 
   constructor(
@@ -45,10 +43,7 @@ export class ShoppingService {
           return products;
         })
       ).subscribe(
-        (products: Array<ProductInterf>) => {
-          this.shoppingList = products;
-          this.dataProviderSubject.next(this.shoppingList);
-        },
+        (products: Array<ProductInterf>) => this.shoppingList = products,
         (error) => this.loggingService.notify(null, null, error.message)
       )
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,9 @@ export class LoginComponent implements OnInit {
   // 0 = login
   // 1 = register
 
-  constructor() { }
+  constructor(
+    public authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -31,11 +34,12 @@ export class LoginComponent implements OnInit {
   }
 
   submitForm(): void {
+    if (!this.form.valid) return;
     if (this.action) {
-      console.log('register')
+      this.authService.signUp(this.form.value, this.form);
       return;
     }
-    console.log('log in')
+    this.authService.signIn(this.form.value, this.form);
   }
 
   formAction(action: number): void {

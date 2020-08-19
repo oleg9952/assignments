@@ -2,11 +2,12 @@
     <form class="form"
         [formGroup]="form"
         (ngSubmit)="submitForm()"
+
     >
         <div class="form__header">
             <h1>Log in / Register</h1>
         </div>
-        <div class="form__body">
+        <div class="form__body" *ngIf="!authService.processing">
             <input 
                 type="email" 
                 placeholder="Email..."
@@ -29,6 +30,9 @@
                     (click)="formAction(1)"
                 >Register</button>
             </div>
+        </div>
+        <div *ngIf="authService.processing">
+            <app-spinner></app-spinner>
         </div>
     </form>
 </div>
