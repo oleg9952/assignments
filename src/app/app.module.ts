@@ -5,6 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { ShoppingListModule } from './Pages/shopping-list/shopping-list.module';
+import { AuthInterceptor } from './Services/auth.interceptor'
+
 import { AppComponent } from './app.component';
 import { FormComponent } from './Components/form/form.component';
 import { NotificationComponent } from './Components/notification/notification.component';
@@ -13,7 +16,6 @@ import { HomeComponent } from './Pages/home/home.component';
 import { AddPurchaseComponent } from './Pages/add-purchase/add-purchase.component';
 import { NotFoundComponent } from './Pages/not-found/not-found.component';
 import { AuthControlsComponent } from './Components/auth-controls/auth-controls.component';
-import { ShoppingListModule } from './Pages/shopping-list/shopping-list.module';
 import { LoginComponent } from './Pages/login/login.component';
 import { SpinnerComponent } from './Components/spinner/spinner.component';
 
@@ -39,7 +41,11 @@ import { SpinnerComponent } from './Components/spinner/spinner.component';
     ShoppingListModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -35,6 +35,10 @@ export default {
             emailNotFound: {
                 type: 'EMAIL_NOT_FOUND',
                 message: 'User does not exist!'
+            },
+            invalidEmail: {
+                type: 'INVALID_EMAIL',
+                message: 'Email is invalid!'
             }
         }
     }
